@@ -13,6 +13,10 @@ class Book(models.Model):
     authors_info = models.CharField(max_length=256)
     isbn = ISBNField(unique=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    published_date = models.DateTimeField()
 
     def __str__(self):
         return f'{self.title}: {self.price}({self.isbn})'
+
+    class Meta:
+        ordering = ('-pk', )

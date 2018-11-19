@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not request.user.is_authenticated %}
+    <h2 class="align-center">Log In</h2>
+    {% include 'partials/_form.html' with submit_button_name='Login' %}
+    {% else %}
+        <p>you are already logged in as user {{request.user.username}}, so at first <a href="{% url 'logout' %}">logout</a>, the plz login again</p>
+    {% endif %}
+{% endblock %}

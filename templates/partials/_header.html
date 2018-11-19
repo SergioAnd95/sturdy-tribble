@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'list' %}">Sturdy Tribble</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'list' %}">Home</a></li>
+            <li><a href="#requests">Requests</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if not request.user.is_authenticated %}
+              <li><a href="{% url 'login' %}">Login</a></li>
+            {% else %}
+              <li><p class="navbar-text">{{ request.user.username }}</p></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

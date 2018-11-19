@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party apps
+    'crispy_forms',
 
     # own apps
     'books',
@@ -133,6 +134,16 @@ STATIC_URL = '/static/'
 
 # Fixtures settings
 
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, 'fixtures')
+]
+
+# Crispy settings
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Configure raven
 if not DEBUG:

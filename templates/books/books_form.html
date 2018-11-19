@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{% if object  %}Edit{% else %}Create{% endif %} Book{% endblock %}
+
+{% block content %}
+    <!-- TODO: add date widget -->
+    {% if object  %}
+        {% include 'partials/_form.html' with submit_button_name='Update' %}
+    {% else %}
+        {% include 'partials/_form.html' with submit_button_name='Create' %}
+    {% endif %}
+{% endblock %}
