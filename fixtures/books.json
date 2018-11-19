@@ -1,0 +1,102 @@
+[
+{
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+        "title": "The Lord of the Rings: Trilogy",
+        "authors_info": "J.R.R. Tolkien",
+        "isbn": "9780544003415",
+        "price": "28.77"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+        "title": "Dive into Python",
+        "authors_info": "M. Pilgrim",
+        "isbn": "9781590593561",
+        "price": "41.70"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+        "title": "Django 2 Web Development Cookbook",
+        "authors_info": "J. Kronika",
+        "isbn": "9781788838085",
+        "price": "35.99"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+        "title": "Fantastic Beasts: The Crimes of Grindelwald",
+        "authors_info": "J.K. Rowling",
+        "isbn": "9781338263893",
+        "price": "14.99"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+        "title": "Fluent Python: Clear, Concise, and Effective Programming",
+        "authors_info": "L. Ramalho",
+        "isbn": "9781491946008",
+        "price": "47.49"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+        "title": "Hogwarts Library (Harry Potter)",
+        "authors_info": "J.K. Rowling",
+        "isbn": "9781338132328",
+        "price": "23.38"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+        "title": "The Magnolia Story",
+        "authors_info": "C. Gaines, J.Gaines, M. Dagostino",
+        "isbn": "0718079183",
+        "price": "16.50"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+        "title": "My Oxford Year: A Novel",
+        "authors_info": "J. Whelan",
+        "isbn": "9781524763138",
+        "price": "20.00"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 9,
+    "fields": {
+        "title": "Making Embedded Systems",
+        "authors_info": "E. White",
+        "isbn": "9781449320584",
+        "price": "31.99"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 10,
+    "fields": {
+        "title": "Cracking the Coding Interview: 189 Programming Questions and Solutions",
+        "authors_info": "G.L McDowell",
+        "isbn": "9780984782857",
+        "price": "38.00"
+    }
+}
+]
