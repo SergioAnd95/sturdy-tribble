@@ -1,4 +1,8 @@
+import logging
+
 from django.db import models
+from django.db.models.signals import post_delete, post_save
+
 from isbn_field import ISBNField
 
 # Create your models here.
@@ -19,4 +23,22 @@ class Book(models.Model):
         return f'{self.title}: {self.price}({self.isbn})'
 
     class Meta:
-        ordering = ('-pk', )
+        ordering = ('-published_date', '-pk')
+
+
+logger = logging.getLogger(__name__)
+
+
+def log_create_update_model_action(sender, instance, created, update_fields, **kwargs):
+    if created:
+        logger.info(f'Created instance of Book: {instance}')
+    else:
+        logger.info(f'Updated instance of Book: {instance}')
+
+
+def log_delete_model_action(sender, instance, **kwargs):
+    logger.info(f'Deleted instance of Book: {instance}')
+
+
+post_save.connect(log_create_update_model_action, sender=Book)
+post_delete.connect(log_delete_model_action, sender=Book)

@@ -11,11 +11,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from copy import deepcopy
+
+from django.utils.log import DEFAULT_LOGGING
 
 import dj_database_url
 from envparse import env
 
-from raven import Client
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -50,6 +52,8 @@ INSTALLED_APPS = [
     # third-party apps
     'crispy_forms',
     'bootstrap_datepicker_plus',
+    'constance',
+    'constance.backends.database',
 
     # own apps
     'books',
@@ -81,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'constance.context_processors.config'
             ],
         },
     },
@@ -148,6 +153,34 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# Configure raven
-if not DEBUG:
-    pass
+# Constance settings
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+CONSTANCE_CONFIG = {
+    'COPYRIGHT_START_YEAR': (2017, 'copyright starting year', int),
+}
+
+# Setup loggining
+
+LOGGING = deepcopy(DEFAULT_LOGGING)
+LOGGING['formatters'].update({
+    'books': {
+        '()': 'django.utils.log.ServerFormatter',
+        'format': '[{server_time}][Books app] {message}',
+        'style': '{'
+    }
+})
+LOGGING['handlers'].update({
+    'books': {
+        'level': 'INFO',
+        'class': 'logging.StreamHandler',
+        'formatter': 'books',
+    }
+})
+LOGGING['loggers'].update({
+    'books': {
+        'handlers': ['books'],
+        'level': 'INFO',
+        'propagate': False
+    }
+})
