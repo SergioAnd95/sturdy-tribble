@@ -23,7 +23,8 @@ from books.views import BooksListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', BooksListView.as_view(), name='home'),
-    path('books/', include('books.urls')),
+    path('books/', include(('books.urls', 'books'), namespace='books')),
+    path('requests/', include(('requests.urls', 'requests'), namespace='requests')),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout')
 ]

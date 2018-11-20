@@ -5,7 +5,8 @@
 {% block title %}{% if object  %}Edit{% else %}Create{% endif %} Book{% endblock %}
 
 {% block content %}
-    <!-- TODO: add date widget -->
+    <p><a href="{% url 'home' %}"><- Book list</a></p>
+    <h3 class="text-center">{% if object  %}Edit{% else %}Create{% endif %} Book</h3>
     {% if object  %}
         {% include 'partials/_form.html' with submit_button_name='Update' %}
     {% else %}

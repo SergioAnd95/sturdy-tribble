@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <!-- TODO: add links for create and update book only for superuser or staff -->
+    <a class="btn btn-primary" href="{% url 'books:create' %}" role="button">Create book</a>
     {% if books %}
     <table class="table table-striped">
         <thead>
@@ -22,7 +22,7 @@
                     <td>{{ book.authors_info }}</td>
                     <td>{{ book.isbn }}</td>
                     <td>{{ book.price }}$</td>
-                    <td>{% if request.user.is_staff %}<a href="{% url 'edit' book.pk %}">Edit</a>{% endif %}</td>
+                    <td>{% if request.user.is_staff %}<a href="{% url 'books:edit' book.pk %}">Edit</a>{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>

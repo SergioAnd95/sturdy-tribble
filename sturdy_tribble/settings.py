@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     # own apps
     'books',
+    'requests',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'requests.middlewares.SaveRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'sturdy_tribble.urls'

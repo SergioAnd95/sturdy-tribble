@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Requests{% endblock %}
+
+{% block content %}
+    {% if requests %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Status</th>
+                <th>Body</th>
+                <td>Time</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in requests %}
+                <tr>
+                    <td>{{ r.method }}</td>
+                    <td>{{ r.path }}</td>
+                    <td>{{ r.status_code }}</td>
+                    <td style="max-width: 300px; word-break: break-all;">{{ r.body }}</td>
+                    <td>{{ r.time  }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>Not exist any requests at the moment</p>
+    {% endif %}
+{% endblock %}
