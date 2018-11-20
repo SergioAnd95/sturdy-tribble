@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     # third-party apps
     'crispy_forms',
+    'bootstrap_datepicker_plus',
 
     # own apps
     'books',
