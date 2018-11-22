@@ -3,7 +3,9 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <a class="btn btn-primary" href="{% url 'books:create' %}" role="button">Create book</a>
+    {% if request.user.is_staff or request.user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'books:create' %}" role="button">Create book</a>
+    {% endif %}
     {% if books %}
     <table class="table table-striped">
         <thead>
@@ -22,7 +24,7 @@
                     <td>{{ book.authors_info }}</td>
                     <td>{{ book.isbn }}</td>
                     <td>{{ book.price }}$</td>
-                    <td>{% if request.user.is_staff %}<a href="{% url 'books:edit' book.pk %}">Edit</a>{% endif %}</td>
+                    <td>{% if request.user.is_staff  or request.user.is_superuser %}<a href="{% url 'books:edit' book.pk %}">Edit</a>{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>

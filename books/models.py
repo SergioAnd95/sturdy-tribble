@@ -2,6 +2,7 @@ import logging
 
 from django.db import models
 from django.db.models.signals import post_delete, post_save
+from django.utils import timezone
 
 from isbn_field import ISBNField
 
@@ -17,7 +18,7 @@ class Book(models.Model):
     authors_info = models.CharField(max_length=256)
     isbn = ISBNField(unique=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    published_date = models.DateField()
+    published_date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return f'{self.title}: {self.price}({self.isbn})'
